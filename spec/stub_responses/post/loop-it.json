@@ -1,0 +1,12 @@
+{
+  "data": {
+    "id": 76046,
+    "profileId": 1234,
+    "name": "Brian Erwin",
+    "transactionType": "PURCHASE_OFFER",
+    "status": "PRE_OFFER",
+    "created": "2017-05-30T21:42:17Z",
+    "updated": "2017-05-31T23:27:11Z",
+    "loopUrl": "https://www.dotloop.com/m/loop?viewId=76046"
+  }
+}

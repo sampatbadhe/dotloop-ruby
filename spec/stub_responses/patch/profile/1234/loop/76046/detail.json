@@ -1,0 +1,39 @@
+{
+  "data":
+  {
+    "Property Address":
+    {
+      "Country":"US",
+      "Street Number":"2100",
+      "Street Name":"Waterview Dr",
+      "City":"San Francisco",
+      "State/Prov":"CA",
+      "Zip/Postal Code":"94114",
+      "County":"Cuyahoga",
+      "MLS Number":"12345"
+    },
+    "Financials":
+    {
+      "Purchase/Sale Price":"25000"
+    },
+    "Contract Dates":
+    {
+      "Closing Date":"11/01/2017"
+    },
+    "Contract Info":
+    {
+      "Transaction Number":"Trans_12"
+    },
+    "Listing Information":
+    {
+      "Expiration Date":"March 05, 2017",
+      "Original Price":"110000.0",
+      "Current Price":"10000"
+    },
+    "Property":
+    {
+      "Type":"simple",
+      "Lot Size":"1"
+    }
+  }
+}

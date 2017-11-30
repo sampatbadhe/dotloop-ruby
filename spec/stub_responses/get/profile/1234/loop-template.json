@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "total": 5
+  },
+  "data": [
+    {
+      "id": 421,
+      "profileId": 1234,
+      "name": "My Loop Template 1",
+      "transactionType": "PURCHASE_OFFER",
+      "shared": true,
+      "global": false
+    },
+    {
+      "id": 422,
+      "profileId": 1234,
+      "name": "My Loop Template 2",
+      "transactionType": "PURCHASE_OFFER",
+      "shared": true,
+      "global": false
+    },
+    {
+      "id": 423,
+      "profileId": 1234,
+      "name": "My Loop Template 3",
+      "transactionType": "PURCHASE_OFFER",
+      "shared": true,
+      "global": false
+    },
+    {
+      "id": 424,
+      "profileId": 1234,
+      "name": "My Loop Template 4",
+      "transactionType": "PURCHASE_OFFER",
+      "shared": true,
+      "global": false
+    },
+    {
+      "id": 425,
+      "profileId": 1234,
+      "name": "My Loop Template 5",
+      "transactionType": "PURCHASE_OFFER",
+      "shared": true,
+      "global": false
+    }
+  ]
+}

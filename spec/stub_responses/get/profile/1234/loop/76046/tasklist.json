@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "total": 2
+  },
+  "data": [
+    {
+      "id": 123,
+      "name": "My Tasks"
+    },
+    {
+      "id": 124,
+      "name": "Other Tasks"
+    }
+  ]
+}

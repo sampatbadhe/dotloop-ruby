@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "total": 3
+  },
+  "data": [
+    {
+      "id": 2355,
+      "fullName": "Brian Erwin",
+      "email": "brianerwin@newkyhome.com",
+      "role": "BUYER"
+    },
+    {
+      "id": 57567,
+      "fullName": "Allen Agent",
+      "email": "allen.agent@gmail.com",
+      "role": "LISTING_AGENT"
+    },
+    {
+      "id": 24743,
+      "fullName": "Sean Seller",
+      "email": "sean.seller@yahoo.com",
+      "role": "SELLER"
+    }
+  ]
+}

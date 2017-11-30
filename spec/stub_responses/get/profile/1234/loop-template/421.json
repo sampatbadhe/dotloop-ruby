@@ -1,0 +1,10 @@
+{
+  "data": {
+    "id": 421,
+    "profileId": 1234,
+    "name": "My Loop Template 1",
+    "transactionType": "PURCHASE_OFFER",
+    "shared": true,
+    "global": false
+  }
+}

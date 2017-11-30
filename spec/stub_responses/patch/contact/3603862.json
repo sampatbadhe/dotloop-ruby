@@ -1,0 +1,17 @@
+{
+  "data": {
+    "id": 3603862,
+    "firstName": "Brian",
+    "lastName": "Erwin",
+    "email": "brianerwin@newkyhome.com",
+    "home": "(415) 888 8888",
+    "office": "(415) 1213 656",
+    "fax": "(415) 8655 686",
+    "address": "2100 Waterview Dr",
+    "city": "San Francisco",
+    "zipCode": "94114",
+    "state": "CA",
+    "country": "US",
+    "updated": "2017-04-20T03:48:30Z"
+  }
+}
