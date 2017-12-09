@@ -17,7 +17,7 @@ describe Dotloop::Task do
   describe '#all' do
     it 'return a list of tasks' do
       dotloop_mock(:tasks)
-      tasks = subject.all(profile_id: 1_234, loop_id: 76_046, tasklist_id: 123)
+      tasks = subject.all(profile_id: 1_234, loop_id: 76_046, task_list_id: 123)
       expect(tasks).not_to be_empty
       expect(tasks).to all(be_a(Dotloop::Models::Task))
       expect(tasks.first).to have_attributes(name: 'contract')
@@ -27,7 +27,7 @@ describe Dotloop::Task do
   describe '#find' do
     it 'return a task' do
       dotloop_mock(:task)
-      task = subject.find(profile_id: 1_234, loop_id: 76_046, tasklist_id: 123, task_id: 125736485)
+      task = subject.find(profile_id: 1_234, loop_id: 76_046, task_list_id: 123, task_id: 125736485)
       expect(task).to be_a(Dotloop::Models::Task)
       expect(task).to have_attributes(name: 'contract')
     end

@@ -15,7 +15,7 @@ module Dotloop
         client.Task.all(
           profile_id: profile_id,
           loop_id: loop_id,
-          tasklist_id: id
+          task_list_id: id
         )
       end
 
@@ -23,7 +23,7 @@ module Dotloop
         client.Tasklist.get(
           profile_id: profile_id,
           loop_id: loop_id,
-          tasklist_id: id
+          task_list_id: id
         )
       end
     end

@@ -12,7 +12,7 @@ module Dotloop
       attr_accessor :client
       attr_accessor :profile_id
       attr_accessor :loop_id
-      attr_accessor :tasklist_id
+      attr_accessor :task_list_id
     end
   end
 end

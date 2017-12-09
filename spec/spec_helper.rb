@@ -10,12 +10,11 @@ require 'pry'
 require 'webmock/rspec'
 require_relative './helpers/webmocks'
 
-ROOT = Pathname.new(Gem::Specification.find_by_name('dotloop').gem_dir).freeze
-require 'dotloop'
+ROOT = Pathname.new(Gem::Specification.find_by_name('dotloop-ruby').gem_dir).freeze
+require 'dotloop-ruby'
 
 WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |conf|
-  # conf.include Fixtures
   conf.include Helpers
 end
