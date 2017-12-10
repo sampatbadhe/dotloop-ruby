@@ -62,7 +62,19 @@ Dotloop uses OAuth2 for authentication (https://dotloop.github.io/public-api/#au
       "token_type": "Bearer",
       "refresh_token": "19bfda68-ca62-480c-9c62-2ba408458fc7",
       "expires_in": 43145,
-      "scope": "profile:*, loop:*"
+      "scope": "account:read, profile:*, loop:*, contact:*, template:read"
+    }
+
+  # refresh access token - https://dotloop.github.io/public-api/#refreshing-access-token-after-expiration
+
+  response = dotloop_auth.refresh_access_token(refresh_token)
+
+    {
+      "access_token": "86609772-aa95-4071-ad7f-25ad2d0be295",
+      "token_type": "Bearer",
+      "refresh_token": "19bfda68-ca62-480c-9c62-2ba408458fc7",
+      "expires_in": 43199,
+      "scope": "account:read, profile:*, loop:*, contact:*, template:read"
     }
 ```
 
