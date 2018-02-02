@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["sampat.badhe@kiprosh.com"]
 
   spec.summary       = %(Dotloop library)
-  spec.description   = %(dotloop-ruby id Ruby library for Dotloop API v2.)
+  spec.description   = %(dotloop-ruby is Ruby library for Dotloop API v2.)
   spec.homepage      = "https://github.com/sampatbadhe/dotloop-ruby"
   spec.license       = "MIT"
 

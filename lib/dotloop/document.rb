@@ -45,11 +45,8 @@ module Dotloop
     end
 
     def upload(profile_id:, loop_id:, folder_id:, params: {})
-      file_url = params["file_url"]
       file_name = params["file_name"]
       file_content = params["file_content"]
-      # url = relative_path_S3(file_url)
-      # file = Aws::S3::Object.new(S3_CREDENTIALS['bucket'], url, region: S3_CREDENTIALS["region"]).get.data.body.read
 
       post_body = []
 

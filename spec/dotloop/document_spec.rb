@@ -46,10 +46,9 @@ describe Dotloop::Document do
 
   describe '#upload' do
     it 'return a document' do
-      file_url = "spec/stub_responses/get/profile/1234/loop/76046/folder/423424/document/561621/AgencyDisclosureStatementSeller.pdf"
       file =  File.read("#{ROOT}/spec/stub_responses/get/profile/1234/loop/76046/folder/423424/document/561621/AgencyDisclosureStatementSeller.pdf")
       dotloop_mock(:document_upload, :post, 201)
-      document = subject.upload(profile_id: 1_234, loop_id: 76_046, folder_id: 423_424, params: { "file_url" => file_url, "file_name" => 'AgencyDisclosureStatementSeller.pdf', "file_content" => file })
+      document = subject.upload(profile_id: 1_234, loop_id: 76_046, folder_id: 423_424, params: { "file_name" => 'AgencyDisclosureStatementSeller.pdf', "file_content" => file })
       expect(document).to be_a(Dotloop::Models::Document)
       expect(document).to have_attributes(name: 'AgencyDisclosureStatementSeller.pdf')
     end
