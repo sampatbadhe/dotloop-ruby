@@ -243,7 +243,7 @@ Dotloop uses OAuth2 for authentication (https://dotloop.github.io/public-api/#au
     profile_id: '1234',
     loop_id: '34308',
     folder_id: '423424',
-    params: { "file_url" => file_url, "file_name" => file_name }
+    params: { "file_name" => file_name, "file_content" => file_content }
   )
 
   #=> dowload a document - Retrieve an individual document (binary)

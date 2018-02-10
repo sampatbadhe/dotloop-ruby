@@ -47,7 +47,8 @@ module Dotloop
     def upload(profile_id:, loop_id:, folder_id:, params: {})
       file_name = params["file_name"]
       file_content = params["file_content"]
-
+      raise 'Please pass file name' if (file_name.nil? || file_name.empty?)
+      raise 'Please pass file content' if (file_content.nil? || file_content.empty?)
       post_body = []
 
       post_body << "--#{DOTLOOP_FILE_UPLOAD_BOUNDARY}\r\n"

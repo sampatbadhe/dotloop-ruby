@@ -52,5 +52,35 @@ describe Dotloop::Document do
       expect(document).to be_a(Dotloop::Models::Document)
       expect(document).to have_attributes(name: 'AgencyDisclosureStatementSeller.pdf')
     end
+
+    it 'raise the error if file name is not provided' do
+      file =  File.read("#{ROOT}/spec/stub_responses/get/profile/1234/loop/76046/folder/423424/document/561621/AgencyDisclosureStatementSeller.pdf")
+      dotloop_mock(:document_upload, :post, 201)
+      expect {
+        subject.upload(profile_id: 1_234, loop_id: 76_046, folder_id: 423_424, params: { "file_content" => file })
+      }.to raise_error RuntimeError
+    end
+
+    it 'raise the error if file name is empty' do
+      file =  File.read("#{ROOT}/spec/stub_responses/get/profile/1234/loop/76046/folder/423424/document/561621/AgencyDisclosureStatementSeller.pdf")
+      dotloop_mock(:document_upload, :post, 201)
+      expect {
+        subject.upload(profile_id: 1_234, loop_id: 76_046, folder_id: 423_424, params: { "file_name" => '', "file_content" => file })
+      }.to raise_error RuntimeError
+    end
+
+    it 'raise the error if file content is not provided' do
+      dotloop_mock(:document_upload, :post, 201)
+      expect {
+        subject.upload(profile_id: 1_234, loop_id: 76_046, folder_id: 423_424, params: { "file_name" => 'AgencyDisclosureStatementSeller.pdf' })
+      }.to raise_error RuntimeError
+    end
+
+    it 'raise the error if file content is empty' do
+      dotloop_mock(:document_upload, :post, 201)
+      expect {
+        subject.upload(profile_id: 1_234, loop_id: 76_046, folder_id: 423_424, params: { "file_name" => 'AgencyDisclosureStatementSeller.pdf', "file_content" => '' })
+      }.to raise_error RuntimeError
+    end
   end
 end
