@@ -54,7 +54,7 @@ module Dotloop
     def handle_dotloop_error(response_code)
       error = case response_code
               when 400
-                Services::Dotloop::BadRequest
+                Dotloop::BadRequest
               when 401
                 Dotloop::Unauthorized
               when 403
