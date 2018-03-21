@@ -52,15 +52,16 @@ module Dotloop
     end
 
     def all(options = {})
-      loops = []
-      options[:batch_size] = BATCH_SIZE
-      (1..MAX_LOOPS).each do |i|
-        options[:batch_number] = i
-        current_batch = batch(options)
-        loops += current_batch
-        break if current_batch.size < options[:batch_size]
-      end
-      loops
+      raise_if_invalid_batch_size(options)
+      options[:batch_size] ||= BATCH_SIZE
+      Array.new.tap do |arr|
+        (1..MAX_LOOPS).each do |i|
+          options[:batch_number] = i
+          current_batch = batch(options)
+          arr.push current_batch
+          break if current_batch.size < options[:batch_size]
+        end
+      end.flatten
     end
 
     def batch(options = {})
@@ -143,6 +144,10 @@ module Dotloop
     end
 
     private
+
+    def raise_if_invalid_batch_size(options)
+      raise 'invalid batch size provided, allowed values minimum 1 and maximum 100' if !options[:batch_size].nil? && (options[:batch_size] < 1 || options[:batch_size] > 100)
+    end
 
     def query_params(options)
       {
