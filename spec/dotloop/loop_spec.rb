@@ -15,7 +15,7 @@ describe Dotloop::Loop do
   end
 
   describe '#all' do
-    it 'return all loops - rejects invalid batch size' do
+    it 'rejects when invalid batch size, allows batch_size > 0 and <= 100' do
       dotloop_mock_batch(:loops)
       expect {
         subject.all(profile_id: '1234', batch_size: 500)
