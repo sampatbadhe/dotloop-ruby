@@ -53,7 +53,8 @@ module Dotloop
 
     def all(options = {})
       loops = []
-      options[:batch_size] = BATCH_SIZE
+      raise 'invalid batch size provided, allowed values minimum 1 and maximum 100' if !options[:batch_size].nil? && (options[:batch_size] < 1 || options[:batch_size] > 100)
+      options[:batch_size] ||= BATCH_SIZE
       (1..MAX_LOOPS).each do |i|
         options[:batch_number] = i
         current_batch = batch(options)
