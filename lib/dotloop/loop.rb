@@ -152,7 +152,7 @@ module Dotloop
     def query_params(options)
       {
         batch_number:        batch_number(options),
-        batch_size:          batch_size(options),
+        batch_size:          options[:batch_size].to_i,
         sort:                options[:sort],
         filter:              options[:filter],
         include_details:     options[:include_details]

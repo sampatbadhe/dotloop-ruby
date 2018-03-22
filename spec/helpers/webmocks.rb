@@ -10,14 +10,18 @@ module Helpers
   def dotloop_mock_batch(request)
     endpoint = standard_endpoints(request)
     batch1_file = File.new(filename_to_path_json([endpoint, '_page1']))
-    batch2_file = File.new(filename_to_path_json([endpoint, '_page2']))
+    batch2_file = File.new(filename_to_path_json([endpoint, '_page1']))
+    batch3_file = File.new(filename_to_path_json([endpoint, '_page2']))
     url = endpoint_to_url(endpoint)
     WebMock
-      .stub_request(:get, [url, '?batch_number=1&batch_size=50'].join)
+      .stub_request(:get, [url, '?batch_number=1&batch_size=100'].join)
       .to_return(body: batch1_file, status: 200, headers: { 'Content-Type' => 'application/json' })
     WebMock
-      .stub_request(:get, [url, '?batch_number=2&batch_size=50'].join)
+      .stub_request(:get, [url, '?batch_number=1&batch_size=50'].join)
       .to_return(body: batch2_file, status: 200, headers: { 'Content-Type' => 'application/json' })
+    WebMock
+      .stub_request(:get, [url, '?batch_number=2&batch_size=50'].join)
+      .to_return(body: batch3_file, status: 200, headers: { 'Content-Type' => 'application/json' })
   end
 
   def dotloop_mock_raise_error(request, error, batch = false)
