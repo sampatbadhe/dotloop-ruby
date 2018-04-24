@@ -8,6 +8,7 @@ module Dotloop
       attribute :address
       attribute :city
       attribute :company
+      attribute :deactivated, Boolean
       attribute :default, Boolean
       attribute :fax
       attribute :id, Integer
