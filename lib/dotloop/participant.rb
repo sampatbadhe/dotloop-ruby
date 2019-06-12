@@ -4,7 +4,7 @@ module Dotloop
   class Participant
     attr_accessor :client
 
-    PARTICIPANT_FIELDS = %w[fullName email role].freeze
+    PARTICIPANT_FIELDS = %w[fullName email role phone].freeze
 
     def initialize(client:)
       @client = client

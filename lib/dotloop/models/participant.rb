@@ -8,6 +8,7 @@ module Dotloop
       attribute :full_name
       attribute :id, Integer
       attribute :role
+      attribute :phone
 
       attr_accessor :client
       attr_accessor :profile_id
