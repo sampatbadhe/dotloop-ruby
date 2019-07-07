@@ -2,6 +2,7 @@
 
 module Dotloop
   class LoopDetail
+    include Dotloop::ParseData
     attr_accessor :details
     FIXED_SECTIONS = %i[
       contract_dates contract_info financials geographic_description
@@ -13,26 +14,10 @@ module Dotloop
       parse_data(data)
     end
 
-    def parse_data(data)
-      fix_hash_keys(data).each { |item| build_section(item[0], item[1]) }
-    end
-
     private
 
-    def build_section(key, section_data)
-      return unless FIXED_SECTIONS.include?(key)
-      values = fix_hash_keys(section_data)
-      @details[key] = values
-    end
-
-    def index_to_key(index)
-      index.to_s.downcase.delete(%(')).gsub(/%/, ' percent ').gsub(/\$/, ' doller ').gsub(/[^a-z]/, '_').squeeze('_').gsub(/^_*/, '').gsub(/_*$/, '').to_sym
-    end
-
-    def fix_hash_keys(bad_hash)
-      bad_hash.each_with_object({}) do |item, memo|
-        memo[index_to_key(item[0])] = item[1]
-      end
+    def fields
+      FIXED_SECTIONS
     end
   end
 end
