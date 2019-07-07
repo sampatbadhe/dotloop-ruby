@@ -1,5 +1,8 @@
 # Ruby library for Dotloop API v2
 
+[![Build Status](https://semaphoreci.com/api/v1/sampat-badhe/dotloop-ruby/branches/master/badge.svg)](https://semaphoreci.com/sampat-badhe/dotloop-ruby)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a03408e2791211b8b816/test_coverage)](https://codeclimate.com/github/sampatbadhe/dotloop-ruby/test_coverage)
+
 * [Homepage](https://www.dotloop.com)
 * [API Documentation](https://dotloop.github.io/public-api)
 * [Sign Up](https://www.dotloop.com/#/signup)
