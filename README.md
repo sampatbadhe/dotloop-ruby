@@ -280,7 +280,15 @@ Dotloop uses OAuth2 for authentication (https://dotloop.github.io/public-api/#au
     params = {
       "fullName": "Brian Erwin",
       "email": "brian@gmail.com",
-      "role": "BUYER"
+      "role": "BUYER",
+      "Street Name": "123",
+      "Street Number": "Main St.",
+      "City": "Cincinnati",
+      "Zip/Postal Code": "45123",
+      "Country":  "USA",
+      "Phone": "(555) 555-5555",
+      "Cell Phone": "(555) 555-4444",
+      "Company Name":  "Buyer's Company"
     }
 
   #=> update participant
