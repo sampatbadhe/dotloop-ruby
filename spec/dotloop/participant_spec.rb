@@ -38,12 +38,14 @@ describe Dotloop::Participant do
       params = {
         "fullName": "Brian Erwin",
         "email": "brian@gmail.com",
-        "role": "BUYER"
+        "role": "BUYER",
+        "phone": "5558675309"
       }
 
       participant = subject.create(profile_id: 1_234, loop_id: 76_046, params: params)
       expect(participant).to be_a(Dotloop::Models::Participant)
       expect(participant).to have_attributes(full_name: 'Brian Erwin')
+      expect(participant).to have_attributes(phone: '5558675309')
     end
   end
 
