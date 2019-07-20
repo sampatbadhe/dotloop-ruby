@@ -17,4 +17,8 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 RSpec.configure do |conf|
   conf.include Helpers
+
+  conf.define_derived_metadata do |meta|
+    meta[:aggregate_failures] = true
+  end
 end

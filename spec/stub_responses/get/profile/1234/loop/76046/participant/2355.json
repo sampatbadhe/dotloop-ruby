@@ -3,6 +3,16 @@
     "id": 2355,
     "fullName": "Brian Erwin",
     "email": "brianerwin@newkyhome.com",
-    "role": "BUYER"
+    "role": "BUYER",
+    "company name": "Buyer's Company",
+    "street name": "Main street",
+    "street number": "123",
+    "unit number": "2",
+    "zip/postal code": "45123",
+    "country": "USA",
+    "city": "Cincinnati",
+    "state/prov": "OH",
+    "phone": "(555) 555-5555",
+    "cell phone": "(555) 555-4444"
   }
 }

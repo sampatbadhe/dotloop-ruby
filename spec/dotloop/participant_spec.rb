@@ -37,15 +37,35 @@ describe Dotloop::Participant do
       dotloop_mock(:participants, :post, 201)
       params = {
         "fullName": "Brian Erwin",
-        "email": "brian@gmail.com",
+        "email": "brianerwin@newkyhome.com",
         "role": "BUYER",
-        "phone": "5558675309"
+        "Company Name": "Buyer's Company",
+        "Street Name": "Main street",
+        "Street Number": "123",
+        "Unit Number": "2",
+        "Zip/Postal Code": "45123",
+        "Country": "USA",
+        "City": "Cincinnati",
+        "State/Prov": "OH",
+        "Phone": "(555) 555-5555",
+        "Cell Phone": "(555) 555-4444"
       }
 
       participant = subject.create(profile_id: 1_234, loop_id: 76_046, params: params)
       expect(participant).to be_a(Dotloop::Models::Participant)
       expect(participant).to have_attributes(full_name: 'Brian Erwin')
-      expect(participant).to have_attributes(phone: '5558675309')
+      expect(participant).to have_attributes(email: 'brianerwin@newkyhome.com')
+      expect(participant).to have_attributes(role: 'BUYER')
+      expect(participant).to have_attributes(street_name: 'Main street')
+      expect(participant).to have_attributes(street_number: '123')
+      expect(participant).to have_attributes(city: 'Cincinnati')
+      expect(participant).to have_attributes(state_prov: 'OH')
+      expect(participant).to have_attributes(zip_postal_code: '45123')
+      expect(participant).to have_attributes(unit_number: '2')
+      expect(participant).to have_attributes(country: 'USA')
+      expect(participant).to have_attributes(phone: '(555) 555-5555')
+      expect(participant).to have_attributes(cell_phone: '(555) 555-4444')
+      expect(participant).to have_attributes(company_name: "Buyer's Company")
     end
   end
 
