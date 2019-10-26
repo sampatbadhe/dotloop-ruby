@@ -59,6 +59,14 @@ describe Dotloop::Client do
       end
     end
 
+    context 'when there is a 400 error' do
+      let(:code) { 400 }
+      it 'raise an Unauthorized error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::BadRequest
+      end
+    end
+
     context 'when there is a 401 error' do
       let(:code) { 401 }
       it 'raise an Unauthorized error' do
@@ -72,6 +80,30 @@ describe Dotloop::Client do
       it 'raise an Forbidden error' do
         expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
         expect { subject.get('foo') }.to raise_error Dotloop::Forbidden
+      end
+    end
+
+    context 'when there is a 404 error' do
+      let(:code) { 404 }
+      it 'raise an Forbidden error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::NotFound
+      end
+    end
+
+    context 'when there is a 422 error' do
+      let(:code) { 422 }
+      it 'raise an Forbidden error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::UnprocessableEntity
+      end
+    end
+
+    context 'when there is a 429 error' do
+      let(:code) { 429 }
+      it 'raise an Forbidden error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::TooManyRequest
       end
     end
 
