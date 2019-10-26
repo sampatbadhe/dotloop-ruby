@@ -79,6 +79,11 @@ Dotloop uses OAuth2 for authentication (https://dotloop.github.io/public-api/#au
       "expires_in": 43199,
       "scope": "account:read, profile:*, loop:*, contact:*, template:read"
     }
+
+  # revoke access - https://dotloop.github.io/public-api/#access-revocation
+
+  dotloop_auth.revoke_access(access_token)
+
 ```
 
 ### Usage
