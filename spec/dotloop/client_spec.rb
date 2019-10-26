@@ -133,6 +133,13 @@ describe Dotloop::Client do
     end
   end
 
+  describe '#account' do
+    it 'return a account object' do
+      dotloop_mock(:account)
+      expect(subject.account).to be_a(Dotloop::Models::Account)
+    end
+  end
+
   describe '#Contact' do
     it 'return a Contact object' do
       expect(subject.Contact).to be_a(Dotloop::Contact)

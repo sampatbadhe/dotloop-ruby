@@ -75,7 +75,7 @@ module Dotloop
     end
 
     def account
-      get('/account', {})
+      @account ||= Dotloop::Account.new(client: self).find
     end
 
     def Document
