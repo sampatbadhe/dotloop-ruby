@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Dotloop::Task do
@@ -27,7 +29,7 @@ describe Dotloop::Task do
   describe '#find' do
     it 'return a task' do
       dotloop_mock(:task)
-      task = dotloop_task.find(profile_id: 1_234, loop_id: 76_046, task_list_id: 123, task_id: 125736485)
+      task = dotloop_task.find(profile_id: 1_234, loop_id: 76_046, task_list_id: 123, task_id: 125_736_485)
       expect(task).to be_a(Dotloop::Models::Task)
       expect(task).to have_attributes(name: 'contract')
     end

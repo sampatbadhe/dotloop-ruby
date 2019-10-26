@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Helpers
-  def dotloop_mock(request, request_type = :get, status_code = 200, query_params = "")
+  def dotloop_mock(request, request_type = :get, status_code = 200, query_params = '')
     endpoint = standard_endpoints(request)
     data_file = File.new(filename_to_path_json(endpoint, request_type.to_s))
     WebMock
@@ -60,7 +62,7 @@ module Helpers
   end
 
   def filename_to_path_json(filenames, request_type = 'get')
-    filename_to_path([filenames].flatten.join.chomp("/") + '.json', request_type)
+    filename_to_path([filenames].flatten.join.chomp('/') + '.json', request_type)
   end
 
   def filename_to_path(filename, request_type)
@@ -75,27 +77,27 @@ module Helpers
 
   def standard_endpoints(lookup)
     {
-      loop_it:         'loop-it',
-      profiles:        'profile',
-      profile:         'profile/1234',
-      loops:           'profile/1234/loop',
-      loop:            'profile/1234/loop/76046',
-      loop_detail:     'profile/1234/loop/76046/detail',
-      folders:         'profile/1234/loop/76046/folder',
-      folder:          'profile/1234/loop/76046/folder/423424',
-      documents:       'profile/1234/loop/76046/folder/423424/document',
+      loop_it: 'loop-it',
+      profiles: 'profile',
+      profile: 'profile/1234',
+      loops: 'profile/1234/loop',
+      loop: 'profile/1234/loop/76046',
+      loop_detail: 'profile/1234/loop/76046/detail',
+      folders: 'profile/1234/loop/76046/folder',
+      folder: 'profile/1234/loop/76046/folder/423424',
+      documents: 'profile/1234/loop/76046/folder/423424/document',
       document_upload: 'profile/1234/loop/76046/folder/423424/document/',
-      document:        'profile/1234/loop/76046/folder/423424/document/561621',
-      participants:    'profile/1234/loop/76046/participant',
-      participant:     'profile/1234/loop/76046/participant/2355',
-      tasklists:       'profile/1234/loop/76046/tasklist',
-      tasklist:        'profile/1234/loop/76046/tasklist/123',
-      tasks:           'profile/1234/loop/76046/tasklist/123/task',
-      task:            'profile/1234/loop/76046/tasklist/123/task/125736485',
-      loop_templates:  'profile/1234/loop-template',
-      loop_template:   'profile/1234/loop-template/421',
-      contacts:        'contact',
-      contact:         'contact/3603862'
+      document: 'profile/1234/loop/76046/folder/423424/document/561621',
+      participants: 'profile/1234/loop/76046/participant',
+      participant: 'profile/1234/loop/76046/participant/2355',
+      tasklists: 'profile/1234/loop/76046/tasklist',
+      tasklist: 'profile/1234/loop/76046/tasklist/123',
+      tasks: 'profile/1234/loop/76046/tasklist/123/task',
+      task: 'profile/1234/loop/76046/tasklist/123/task/125736485',
+      loop_templates: 'profile/1234/loop-template',
+      loop_template: 'profile/1234/loop-template/421',
+      contacts: 'contact',
+      contact: 'contact/3603862'
     }[lookup.to_sym]
   end
 end

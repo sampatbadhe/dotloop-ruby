@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../../spec_helper'
 
 # rubocop:disable Metrics/BlockLength
@@ -14,7 +16,7 @@ RSpec.describe Dotloop::Models::Loop do
       Loop: detail_,
       Tasklist: tasklists_,
       Folder: folders_,
-      Participant: participants_,
+      Participant: participants_
     )
   end
 

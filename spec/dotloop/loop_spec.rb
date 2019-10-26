@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Dotloop::Loop do
@@ -17,9 +19,9 @@ describe Dotloop::Loop do
   describe '#all' do
     it 'rejects when invalid batch size, allows batch_size > 0 and <= 100' do
       dotloop_mock_batch(:loops)
-      expect {
+      expect do
         dotloop_loop.all(profile_id: '1234', batch_size: 500)
-      }.to raise_error("invalid batch size provided, allowed values minimum 1 and maximum 100")
+      end.to raise_error('invalid batch size provided, allowed values minimum 1 and maximum 100')
     end
 
     it 'return loops - using a batch size params' do
@@ -67,9 +69,9 @@ describe Dotloop::Loop do
   describe '#create' do
     it 'creates a loop' do
       dotloop_mock(:loops, :post, 201)
-      doltoop_loop = dotloop_loop.create(profile_id: 1_234, params: { name: 'Atturo Garay, 3059 Main, Chicago, IL 60614', status: "ARCHIVED", transactionType: "PURCHASE_OFFER" })
+      doltoop_loop = dotloop_loop.create(profile_id: 1_234, params: { name: 'Atturo Garay, 3059 Main, Chicago, IL 60614', status: 'ARCHIVED', transactionType: 'PURCHASE_OFFER' })
       expect(doltoop_loop).to be_a(Dotloop::Models::Loop)
-      expect(doltoop_loop).to have_attributes({ name: 'Atturo Garay, 3059 Main, Chicago, IL 60614', status: "ARCHIVED", transaction_type: "PURCHASE_OFFER", id: 34308 })
+      expect(doltoop_loop).to have_attributes(name: 'Atturo Garay, 3059 Main, Chicago, IL 60614', status: 'ARCHIVED', transaction_type: 'PURCHASE_OFFER', id: 34_308)
     end
   end
 
@@ -84,34 +86,34 @@ describe Dotloop::Loop do
 
   describe '#loop-it' do
     it 'create a loop' do
-      dotloop_mock(:loop_it, :post, 201, "?profile_id=1234")
+      dotloop_mock(:loop_it, :post, 201, '?profile_id=1234')
       params = {
-        "name": "Brian Erwin",
-        "transactionType": "PURCHASE_OFFER",
-        "status": "PRE_OFFER",
-        "streetName": "Waterview Dr",
-        "streetNumber": "2100",
-        "unit": "12",
-        "city": "San Francisco",
-        "zipCode": "94114",
-        "state": "CA",
-        "country": "US",
+        "name": 'Brian Erwin',
+        "transactionType": 'PURCHASE_OFFER',
+        "status": 'PRE_OFFER',
+        "streetName": 'Waterview Dr',
+        "streetNumber": '2100',
+        "unit": '12',
+        "city": 'San Francisco',
+        "zipCode": '94114',
+        "state": 'CA',
+        "country": 'US',
         "participants": [
           {
-            "fullName": "Brian Erwin",
-            "email": "brianerwin@newkyhome.com",
-            "role": "BUYER"
+            "fullName": 'Brian Erwin',
+            "email": 'brianerwin@newkyhome.com',
+            "role": 'BUYER'
           }
         ],
         "templateId": 1424,
-        "mlsPropertyId": "43FSB8",
-        "mlsId": "789",
-        "mlsAgentId": "123456789"
+        "mlsPropertyId": '43FSB8',
+        "mlsId": '789',
+        "mlsAgentId": '123456789'
       }
 
       doltoop_loop = dotloop_loop.loop_it(profile_id: 1_234, params: params)
       expect(doltoop_loop).to be_a(Dotloop::Models::Loop)
-      expect(doltoop_loop).to have_attributes({ name: 'Brian Erwin', status: "PRE_OFFER", transaction_type: "PURCHASE_OFFER", id: 76046 })
+      expect(doltoop_loop).to have_attributes(name: 'Brian Erwin', status: 'PRE_OFFER', transaction_type: 'PURCHASE_OFFER', id: 76_046)
     end
   end
 
@@ -119,14 +121,14 @@ describe Dotloop::Loop do
     it 'updates a loop details' do
       dotloop_mock(:loop_detail, :patch)
       params = {
-        "Property Address" => {
-          "Street Name": "Waterview Dr",
-          "Street Number": "2100",
-          "Unit Number": "12",
-          "City": "San Francisco",
-          "Zip/Postal Code": "94114",
-          "State/Prov": "CA",
-          "Country": "US"
+        'Property Address' => {
+          "Street Name": 'Waterview Dr',
+          "Street Number": '2100',
+          "Unit Number": '12',
+          "City": 'San Francisco',
+          "Zip/Postal Code": '94114',
+          "State/Prov": 'CA',
+          "Country": 'US'
         }
       }
 
