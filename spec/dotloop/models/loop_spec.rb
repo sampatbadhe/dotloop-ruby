@@ -18,7 +18,7 @@ RSpec.describe Dotloop::Models::Loop do
     )
   end
 
-  subject do
+  subject(:dotloop_loop) do
     lp = Dotloop::Models::Loop.new(id: loop_id)
     lp.profile_id = profile_id
     lp.client = client
@@ -28,28 +28,28 @@ RSpec.describe Dotloop::Models::Loop do
   describe '#detail' do
     it 'returns the detail' do
       expect(detail_).to receive(:detail).with(profile_id: profile_id, loop_id: loop_id).and_return(:loop_details)
-      expect(subject.detail).to eq(:loop_details)
+      expect(dotloop_loop.detail).to eq(:loop_details)
     end
   end
 
   describe '#folders' do
     it 'returns folders' do
       expect(folders_).to receive(:all).with(profile_id: profile_id, loop_id: loop_id).and_return(:folders)
-      expect(subject.folders).to eq(:folders)
+      expect(dotloop_loop.folders).to eq(:folders)
     end
   end
 
   describe '#tasklists' do
     it 'returns tasklists' do
       expect(tasklists_).to receive(:all).with(profile_id: profile_id, loop_id: loop_id).and_return(:tasklists)
-      expect(subject.tasklists).to eq(:tasklists)
+      expect(dotloop_loop.tasklists).to eq(:tasklists)
     end
   end
 
   describe '#participants' do
     it 'returns participants' do
       expect(participants_).to receive(:all).with(profile_id: profile_id, loop_id: loop_id).and_return(:participants)
-      expect(subject.participants).to eq(:participants)
+      expect(dotloop_loop.participants).to eq(:participants)
     end
   end
 end

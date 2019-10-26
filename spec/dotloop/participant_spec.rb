@@ -2,22 +2,22 @@ require 'spec_helper'
 
 describe Dotloop::Participant do
   let(:client) { Dotloop::Client.new(access_token: SecureRandom.uuid) }
-  subject { Dotloop::Participant.new(client: client) }
+  subject(:dotloop_participant) { Dotloop::Participant.new(client: client) }
 
   describe '#initialize' do
     it 'exist' do
-      expect(subject).to_not be_nil
+      expect(dotloop_participant).to_not be_nil
     end
 
     it 'set the client' do
-      expect(subject.client).to eq(client)
+      expect(dotloop_participant.client).to eq(client)
     end
   end
 
   describe '#all' do
     it 'return a list of participants' do
       dotloop_mock(:participants)
-      participants = subject.all(profile_id: 1_234, loop_id: 76_046)
+      participants = dotloop_participant.all(profile_id: 1_234, loop_id: 76_046)
       expect(participants).to_not be_empty
       expect(participants).to all(be_a(Dotloop::Models::Participant))
     end
@@ -26,7 +26,7 @@ describe Dotloop::Participant do
   describe '#find' do
     it 'return a participant' do
       dotloop_mock(:participant)
-      participant = subject.find(profile_id: 1_234, loop_id: 76_046, participant_id: 2_355)
+      participant = dotloop_participant.find(profile_id: 1_234, loop_id: 76_046, participant_id: 2_355)
       expect(participant).to be_a(Dotloop::Models::Participant)
       expect(participant).to have_attributes(full_name: 'Brian Erwin')
     end
@@ -51,7 +51,7 @@ describe Dotloop::Participant do
         "Cell Phone": "(555) 555-4444"
       }
 
-      participant = subject.create(profile_id: 1_234, loop_id: 76_046, params: params)
+      participant = dotloop_participant.create(profile_id: 1_234, loop_id: 76_046, params: params)
       expect(participant).to be_a(Dotloop::Models::Participant)
       expect(participant).to have_attributes(full_name: 'Brian Erwin')
       expect(participant).to have_attributes(email: 'brianerwin@newkyhome.com')
@@ -72,7 +72,7 @@ describe Dotloop::Participant do
   describe '#update' do
     it 'return a participant' do
       dotloop_mock(:participant, :patch)
-      participant = subject.update(profile_id: 1_234, loop_id: 76_046, participant_id: 2_355, params: { email: "brian@gmail.com" })
+      participant = dotloop_participant.update(profile_id: 1_234, loop_id: 76_046, participant_id: 2_355, params: { email: "brian@gmail.com" })
       expect(participant).to be_a(Dotloop::Models::Participant)
       expect(participant).to have_attributes(email: "brian@gmail.com")
     end
@@ -81,7 +81,7 @@ describe Dotloop::Participant do
   describe '#delete' do
     it 'deletes a participant' do
       dotloop_mock(:participant, :delete, 204)
-      participant = subject.delete(profile_id: 1_234, loop_id: 76_046, participant_id: 2_355)
+      participant = dotloop_participant.delete(profile_id: 1_234, loop_id: 76_046, participant_id: 2_355)
       expect(participant).to eq({})
     end
   end

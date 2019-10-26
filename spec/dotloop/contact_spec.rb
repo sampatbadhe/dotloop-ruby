@@ -2,22 +2,22 @@ require 'spec_helper'
 
 describe Dotloop::Contact do
   let(:client) { Dotloop::Client.new(access_token: SecureRandom.uuid) }
-  subject { Dotloop::Contact.new(client: client) }
+  subject(:dotloop_contact) { Dotloop::Contact.new(client: client) }
 
   describe '#initialize' do
     it 'exist' do
-      expect(subject).to_not be_nil
+      expect(dotloop_contact).to_not be_nil
     end
 
     it 'set the client' do
-      expect(subject.client).to eq(client)
+      expect(dotloop_contact.client).to eq(client)
     end
   end
 
   describe '#all' do
     it 'return all contacts' do
       dotloop_mock_batch(:contacts)
-      contacts = subject.all()
+      contacts = dotloop_contact.all()
       expect(contacts.size).to eq(52)
       expect(contacts).to all(be_a(Dotloop::Models::Contact))
     end
@@ -26,7 +26,7 @@ describe Dotloop::Contact do
   describe '#find' do
     it 'return a contact' do
       dotloop_mock(:contact)
-      contact = subject.find(contact_id: 3_603_862)
+      contact = dotloop_contact.find(contact_id: 3_603_862)
       expect(contact).to be_a(Dotloop::Models::Contact)
     end
   end

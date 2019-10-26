@@ -4,7 +4,7 @@ RSpec.describe Dotloop::Models::Profile do
   let(:profile_id) { 1234 }
   let(:loop_) { double }
   let(:client) { double(Loop: loop_) }
-  subject do
+  subject(:dotloop_profile) do
     profile = Dotloop::Models::Profile.new(id: profile_id)
     profile.client = client
     profile
@@ -13,7 +13,7 @@ RSpec.describe Dotloop::Models::Profile do
   describe '#loops' do
     it 'returns the profiles loops' do
       expect(loop_).to receive(:all).with(profile_id: profile_id).and_return(:blah)
-      expect(subject.loops).to eq(:blah)
+      expect(dotloop_profile.loops).to eq(:blah)
     end
   end
 end
