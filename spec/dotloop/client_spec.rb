@@ -1,32 +1,34 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe Dotloop::Client do
   let(:access_token) { 'blah' }
   let(:application) { 'bloh' }
-  subject { Dotloop::Client.new(access_token: access_token, application: application) }
+  subject(:dotloop_client) { Dotloop::Client.new(access_token: access_token, application: application) }
 
   describe '#initialize' do
     it 'take an access token' do
-      expect(subject).to be_a(Dotloop::Client)
-      expect(subject.access_token).to eq('blah')
+      expect(dotloop_client).to be_a(Dotloop::Client)
+      expect(dotloop_client.access_token).to eq('blah')
     end
 
     context 'without application' do
-      subject { Dotloop::Client.new(access_token: access_token) }
+      subject(:dotloop_client) { Dotloop::Client.new(access_token: access_token) }
 
       it 'default the application name to dotloop' do
-        expect(subject.application).to eq('dotloop')
+        expect(dotloop_client.application).to eq('dotloop')
       end
     end
 
     it 'take an application name' do
-      expect(subject.application).to eq('bloh')
+      expect(dotloop_client.application).to eq('bloh')
     end
 
     context 'without an api key' do
       let(:access_token) { nil }
       it 'raise the error' do
-        expect { subject }.to raise_error RuntimeError
+        expect { dotloop_client }.to raise_error RuntimeError
       end
     end
   end
@@ -57,6 +59,14 @@ describe Dotloop::Client do
       end
     end
 
+    context 'when there is a 400 error' do
+      let(:code) { 400 }
+      it 'raise an Unauthorized error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::BadRequest
+      end
+    end
+
     context 'when there is a 401 error' do
       let(:code) { 401 }
       it 'raise an Unauthorized error' do
@@ -70,6 +80,30 @@ describe Dotloop::Client do
       it 'raise an Forbidden error' do
         expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
         expect { subject.get('foo') }.to raise_error Dotloop::Forbidden
+      end
+    end
+
+    context 'when there is a 404 error' do
+      let(:code) { 404 }
+      it 'raise an Forbidden error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::NotFound
+      end
+    end
+
+    context 'when there is a 422 error' do
+      let(:code) { 422 }
+      it 'raise an Forbidden error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::UnprocessableEntity
+      end
+    end
+
+    context 'when there is a 429 error' do
+      let(:code) { 429 }
+      it 'raise an Forbidden error' do
+        expect(subject.class).to receive(:get).with('foo', anything).and_return(response)
+        expect { subject.get('foo') }.to raise_error Dotloop::TooManyRequest
       end
     end
 
